@@ -5,7 +5,26 @@ MasterLu go.
 "
 Class {
 	#name : 'MasterLu',
-	#superclass : 'Object',
+	#superclass : 'ProfStef',
 	#category : 'MasterLu',
 	#package : 'MasterLu'
 }
+
+{ #category : 'class initialization' }
+MasterLu class >> default [
+
+	
+	^ self new
+]
+
+{ #category : 'navigating' }
+MasterLu >> go [
+'executed' traceCr.
+	^ self goOn: PhaustoTutorial
+]
+
+{ #category : 'accessing' }
+MasterLu >> lessonView [
+
+	^ lessonView ifNil: [ lessonView := MLuLessonView new ]
+]
