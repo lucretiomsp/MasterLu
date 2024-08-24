@@ -6,6 +6,9 @@ MasterLu go.
 Class {
 	#name : 'MasterLu',
 	#superclass : 'ProfStef',
+	#classVars : [
+		'MLuInstance'
+	],
 	#category : 'MasterLu',
 	#package : 'MasterLu'
 }
@@ -14,12 +17,13 @@ Class {
 MasterLu class >> default [
 
 	
-	^ self new
+	^ MLuInstance ifNil: [ MLuInstance := self new ]
 ]
 
 { #category : 'navigating' }
 MasterLu >> go [
-'executed' traceCr.
+
+	self lessonView isOpenInWindow: false. 
 	^ self goOn: PhaustoTutorial
 ]
 

@@ -4,6 +4,9 @@ An MLuLessonView display a Lesson instance in a Playground
 Class {
 	#name : 'MLuLessonView',
 	#superclass : 'StPlaygroundPresenter',
+	#instVars : [
+		'isOpenInWindow'
+	],
 	#category : 'MasterLu',
 	#package : 'MasterLu'
 }
@@ -14,11 +17,23 @@ MLuLessonView class >> defaultTitle [
 	^ 'Master Lu'
 ]
 
+{ #category : 'accessing' }
+MLuLessonView >> isOpenInWindow [
+
+	^ isOpenInWindow
+]
+
+{ #category : 'accessing' }
+MLuLessonView >> isOpenInWindow: aBoolean [
+
+	isOpenInWindow := aBoolean 
+]
+
 { #category : 'gui' }
 MLuLessonView >> showLesson: aLesson withTitle: aString [
 	"self window setLabel: aString."
 
 	self firstPage contents: aLesson lesson.
-	self open
-	"self isOpenInWindow ifFalse: [ self open ]"
+	self isOpenInWindow ifFalse: [ self open ].
+	self isOpenInWindow: true 
 ]
