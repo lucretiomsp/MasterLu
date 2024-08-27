@@ -12,7 +12,7 @@ Class {
 PhaustoTutorial >> atTheControls [
 
 	^ Lesson
-		  title: 'Hello Phausto'
+		  title: 'At the Controls'
 		  lesson:
 			  '"We create a new Pulse Oscillator, a Square Oscillator with variable Duty Cycle"
 	"Execute the following lines one at the time"
@@ -57,10 +57,7 @@ PhaustoTutorial >> helloPhausto [
 ]
 
 { #category : 'tutorial' }
-PhaustoTutorial >> tutorial [ 
-^ #(
-helloPhausto 
-atTheControls 
-)
+PhaustoTutorial >> tutorial [
 
+	^ #( #helloPhausto #atTheControls )
 ]

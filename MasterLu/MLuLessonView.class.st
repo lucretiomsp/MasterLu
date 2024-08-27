@@ -17,6 +17,12 @@ MLuLessonView class >> defaultTitle [
 	^ 'Master Lu'
 ]
 
+{ #category : 'initialization' }
+MLuLessonView >> initializeWindow: aWindowPresenter [
+
+	aWindowPresenter initialExtent: 900 @ 800
+]
+
 { #category : 'accessing' }
 MLuLessonView >> isOpenInWindow [
 
@@ -35,5 +41,6 @@ MLuLessonView >> showLesson: aLesson withTitle: aString [
 
 	self firstPage contents: aLesson lesson.
 	self isOpenInWindow ifFalse: [ self open ].
-	self isOpenInWindow: true 
+	self window title: aString.
+	self isOpenInWindow: true
 ]
