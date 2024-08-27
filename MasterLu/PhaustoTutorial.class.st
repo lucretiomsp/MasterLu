@@ -37,6 +37,28 @@ PhaustoTutorial >> atTheControls [
 ]
 
 { #category : 'lessons' }
+PhaustoTutorial >> chuckInto [
+
+	^ Lesson
+		  title: 'chuckInto'
+		  lesson:
+			  '"We create a new SineWave Oscillator, by default iy has a frequency of 440 Hz - or A4"
+	"Execute the following lines one at the time"
+	sine := SineOsc new.
+	"We create a DSP from that Oscillator"
+	dsp := sine asDsp.
+	"We initialize the DSP"
+	dsp init.
+	"We start the DSP, now we can hear the SineWave Oscillator"
+	dsp start.
+	"Finally we can turn off the sound"
+	dsp stop.
+	
+	MasterLu next.
+	'
+]
+
+{ #category : 'lessons' }
 PhaustoTutorial >> displayTheUI [
 
 	^ Lesson
@@ -44,9 +66,9 @@ PhaustoTutorial >> displayTheUI [
 		  lesson:
 			  '"We display (and play) a Djembe from its UI, an instrument based on a physical model of the goblet drum originally from West Africa"
 	"Execute the following lines one at the time"
-	djembe := Djembe new.
+	perc := Djembe new.
 	"We create a DSP from the djembe"
-	dsp := djembe asDsp.
+	dsp := perc asDsp.
 	"We initialize the DSP"
 	dsp init.
 	"We start the DSP"
@@ -57,6 +79,9 @@ PhaustoTutorial >> displayTheUI [
 	"Feel free to modify its parameters by turning the knobs"
 	"Finally we can turn off the sound"
 	dsp stop.
+	"Close the UI by pressong the X on its top left corner"
+	
+	"Now You can try to start again from line 3 , substituting Djembe with Marimba, an idiophone with origins in the sub-Saharian Africa "
 	
 	MasterLu next.
 	'
@@ -84,8 +109,52 @@ PhaustoTutorial >> helloPhausto [
 	'
 ]
 
+{ #category : 'lessons' }
+PhaustoTutorial >> stereo [ 
+
+	^ Lesson
+		  title: 'Hello Stereo'
+		  lesson:
+			  '"We create a new Sawtooth oscillator, but with a stereo output"
+	"Execute the following lines one at the time"
+	saw := SineOsc new.
+	"We create a stereo DSP from that Oscillator"
+	dsp := saw stereo asDsp.
+	"We initialize the DSP"
+	dsp init.
+	"We start the DSP, now we can hear the SineWave Oscillator"
+	dsp start.
+	"Finally we can turn off the sound"
+	dsp stop.
+	
+	MasterLu next.
+	'
+]
+
 { #category : 'tutorial' }
 PhaustoTutorial >> tutorial [
 
-	^ #( #helloPhausto #atTheControls #displayTheUI )
+	^ #( #helloPhausto #stereo #atTheControls #displayTheUI #chuckInto #whatAreUGen )
+]
+
+{ #category : 'lessons' }
+PhaustoTutorial >> whatAreUgens [
+
+	^ Lesson
+		  title: 'Unit Generators 101'
+		  lesson:
+			  '"We create a new SineWave Oscillator, by default iy has a frequency of 440 Hz - or A4"
+	"Execute the following lines one at the time"
+	sine := SineOsc new.
+	"We create a DSP from that Oscillator"
+	dsp := sine asDsp.
+	"We initialize the DSP"
+	dsp init.
+	"We start the DSP, now we can hear the SineWave Oscillator"
+	dsp start.
+	"Finally we can turn off the sound"
+	dsp stop.
+	
+	MasterLu next.
+	'
 ]
