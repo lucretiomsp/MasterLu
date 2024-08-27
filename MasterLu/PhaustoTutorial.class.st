@@ -46,7 +46,7 @@ PhaustoTutorial >> displayTheUI [
 	"Execute the following lines one at the time"
 	djembe := Djembe new.
 	"We create a DSP from the djembe"
-	dsp := sine asDsp.
+	dsp := djembe asDsp.
 	"We initialize the DSP"
 	dsp init.
 	"We start the DSP"
@@ -87,5 +87,5 @@ PhaustoTutorial >> helloPhausto [
 { #category : 'tutorial' }
 PhaustoTutorial >> tutorial [
 
-	^ #( #helloPhausto #atTheControls #displayUI )
+	^ #( #helloPhausto #atTheControls #displayTheUI )
 ]
