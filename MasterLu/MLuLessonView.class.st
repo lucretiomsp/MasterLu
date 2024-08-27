@@ -3,7 +3,7 @@ An MLuLessonView display a Lesson instance in a Playground
 "
 Class {
 	#name : 'MLuLessonView',
-	#superclass : 'StPlaygroundPresenter',
+	#superclass : 'StInspectorPresenter',
 	#instVars : [
 		'isOpenInWindow'
 	],
