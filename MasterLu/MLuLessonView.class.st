@@ -3,7 +3,7 @@ An MLuLessonView display a Lesson instance in a Playground
 "
 Class {
 	#name : 'MLuLessonView',
-	#superclass : 'StInspectorPresenter',
+	#superclass : 'StPlaygroundPresenter',
 	#instVars : [
 		'isOpenInWindow'
 	],
@@ -43,4 +43,10 @@ MLuLessonView >> showLesson: aLesson withTitle: aString [
 	self isOpenInWindow ifFalse: [ self open ].
 	self window title: aString.
 	self isOpenInWindow: true
+]
+
+{ #category : 'accessing' }
+MLuLessonView >> withHeaderBar [
+
+	^ true
 ]
