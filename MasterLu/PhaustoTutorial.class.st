@@ -42,18 +42,26 @@ PhaustoTutorial >> chuckInto [
 	^ Lesson
 		  title: 'chuckInto'
 		  lesson:
-			  '"We create a new SineWave Oscillator, by default iy has a frequency of 440 Hz - or A4"
+			  '"We can connect Unit Generators with the ChucK operator =>"
+			  "We kindly borrowed this operator from our friend audio programming language called ChucK"
+			  "https://chuck.stanford.edu"
 	"Execute the following lines one at the time"
-	sine := SineOsc new.
-	"We create a DSP from that Oscillator"
-	dsp := sine asDsp.
+	"how the Unit Generators connect depends on the receiver"
+	synth := FrenchBell new => GreyHoleDW new .
+	"We create a DSP from this synth"
+	dsp := synth asDsp.
 	"We initialize the DSP"
 	dsp init.
 	"We start the DSP, now we can hear the SineWave Oscillator"
 	dsp start.
+	"We display its UI"
+	dsp displayUI.
+	"Now press the DjembeTrigger button to trigger the sound"
+	"Feel free to modify its parameters by turning the knobs"
 	"Finally we can turn off the sound"
 	dsp stop.
-	
+	"Close the UI by pressong the X on its top left corner"
+	"We will see ho to connect different classes of Unit Generators in the folowing lessons"
 	MasterLu next.
 	'
 ]
@@ -134,27 +142,32 @@ PhaustoTutorial >> stereo [
 { #category : 'tutorial' }
 PhaustoTutorial >> tutorial [
 
-	^ #( #helloPhausto #stereo #atTheControls #displayTheUI #chuckInto #whatAreUGen )
+	^ #( #helloPhausto #stereo #atTheControls #displayTheUI #whatAreUGens
+	      #chuckInto )
 ]
 
 { #category : 'lessons' }
-PhaustoTutorial >> whatAreUgens [
+PhaustoTutorial >> whatAreUGens [
 
 	^ Lesson
 		  title: 'Unit Generators 101'
 		  lesson:
-			  '"We create a new SineWave Oscillator, by default iy has a frequency of 440 Hz - or A4"
+			  '"Unit Generators are the basic unit to create sounds in Phausto."
+			  "One or more Unit Generator connected together can become a DSP, a Digital SIgnal Processor."
+			  "A DSP is a program that computes sounds"
 	"Execute the following lines one at the time"
-	sine := SineOsc new.
+	noise  := Noise new.
 	"We create a DSP from that Oscillator"
-	dsp := sine asDsp.
+	dsp := noise stereo asDsp.
 	"We initialize the DSP"
 	dsp init.
-	"We start the DSP, now we can hear the SineWave Oscillator"
+	"We start the DSP, now we can hear the noise"
 	dsp start.
 	"Finally we can turn off the sound"
 	dsp stop.
 	
+	"Unit Generators are the building blocks of synthesis; they are oscillators, noise generators, physical models, filters, envelopes, effects."
+	"The concept of Unit Generator was first developed by Max Mathews at Bell Labs in 1950s"
 	MasterLu next.
 	'
 ]
