@@ -118,14 +118,14 @@ PhaustoTutorial >> helloPhausto [
 ]
 
 { #category : 'lessons' }
-PhaustoTutorial >> stereo [ 
+PhaustoTutorial >> stereo [
 
 	^ Lesson
 		  title: 'Hello Stereo'
 		  lesson:
 			  '"We create a new Sawtooth oscillator, but with a stereo output"
 	"Execute the following lines one at the time"
-	saw := SineOsc new.
+	saw := SawOsc new.
 	"We create a stereo DSP from that Oscillator"
 	dsp := saw stereo asDsp.
 	"We initialize the DSP"
@@ -163,6 +163,9 @@ PhaustoTutorial >> whatAreUGens [
 	dsp init.
 	"We start the DSP, now we can hear the noise"
 	dsp start.
+	"If We open its UI  we fill find a knob for the uLevel, that the volume of the UnitGenerators, in a linear fashion."
+	"All Unit Generators in Phausto have at least the uLevel parameter controllable in real time."
+	 "In audio, a linear increase in a parameter like volume often does not correspond to a linear increase in perceived loudness. Human perception of loudness is more    logarithmic. We will learn more about loudness in a future lesson"
 	"Finally we can turn off the sound"
 	dsp stop.
 	
