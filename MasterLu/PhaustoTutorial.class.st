@@ -46,18 +46,17 @@ PhaustoTutorial >> chuckInto [
 			  "We kindly borrowed this operator from our friend audio programming language called ChucK"
 			  "https://chuck.stanford.edu"
 	"Execute the following lines one at the time"
-	"how the Unit Generators connect depends on the receiver"
+	"How the Unit Generators connect depends on the receiver - here we connect a French Bell into a reverberator effects"
 	synth := FrenchBell new => GreyHoleDW new .
 	"We create a DSP from this synth"
 	dsp := synth asDsp.
 	"We initialize the DSP"
 	dsp init.
-	"We start the DSP, now we can hear the SineWave Oscillator"
 	dsp start.
 	"We display its UI"
 	dsp displayUI.
-	"Now press the DjembeTrigger button to trigger the sound"
-	"Feel free to modify its parameters by turning the knobs"
+	"Now press the FrenchBellTrigger button to trigger the sound"
+	"Feel free to modify the reverb parameters by turning the knobs"
 	"Finally we can turn off the sound"
 	dsp stop.
 	"Close the UI by pressong the X on its top left corner"
