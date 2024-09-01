@@ -7,6 +7,6 @@ Then, copy and execute in a Playground
 ```Smalltalk
 Metacello new
     baseline: 'MasterLu';
-    repository: 'github://lucretiomsp/phausto:main';
+    repository: 'github://lucretiomsp/MasterLu:main';
     load
 ```
