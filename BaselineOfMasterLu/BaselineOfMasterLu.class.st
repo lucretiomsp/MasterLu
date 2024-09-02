@@ -19,4 +19,4 @@ BaselineOfMasterLu >> baseline: spec [
 
 
 		"Internal dependencies"
-		spec package: 'MasterLu' ]
+		spec package: 'MasterLu' ] ]
