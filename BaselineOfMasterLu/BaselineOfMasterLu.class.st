@@ -6,16 +6,16 @@ Class {
 }
 
 { #category : 'baselines' }
-BaselineOfMasterLu >> baseline: spec [
+BaselineOfMasterLu >> baseline: spec
 
 	<baseline>
 	spec for: #common do: [
 		spec
 			package: 'Coypu'
-			with: [ spec repository: 'https://github.com/lucretiomsp/Coypu' ];
+			with: [ spec repository: 'github://lucretiomsp/Coypu' ];
 			package: 'Phausto'
-			with: [ spec repository: 'https://github.com/lucretiomsp/phausto' ];
-			package: 'CoypuIDE' with: [ spec requires: 'Toplo' . spec repository: 'https://github.com/pharo-graphics/CoypuIDE'] .
+			with: [ spec repository: 'github://lucretiomsp/phausto' ];
+			package: 'CoypuIDE' with: [ spec repository: 'github://lucretiomsp/CoypuIDE'] .
 
 
 		"Internal dependencies"
