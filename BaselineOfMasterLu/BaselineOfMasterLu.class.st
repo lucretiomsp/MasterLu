@@ -6,7 +6,7 @@ Class {
 }
 
 { #category : 'baselines' }
-BaselineOfMasterLu >> baseline: spec
+BaselineOfMasterLu >> baseline: spec [
 
 	<baseline>
 	spec for: #common do: [
@@ -20,4 +20,3 @@ BaselineOfMasterLu >> baseline: spec
 
 		"Internal dependencies"
 		spec package: 'MasterLu' ]
-]
