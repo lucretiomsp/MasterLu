@@ -16,9 +16,9 @@ PhaustoTutorial >> atTheControls [
 		  lesson:
 			  '"We create a new Pulse Oscillator, a Square Oscillator with variable Duty Cycle"
 	"Execute the following lines one at the time"
-	sine := PulseOsc new.
+	pulse := PulseOsc new.
 	"We create a DSP from that Oscillator"
-	dsp := sine asDsp.
+	dsp := pulse asDsp.
 	"We initialize the DSP"
 	dsp init.
 	"We start the DSP, now we can hear the SineWave Oscillator"
