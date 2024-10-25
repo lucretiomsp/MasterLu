@@ -6,7 +6,7 @@ Class {
 }
 
 { #category : 'baselines' }
-BaselineOfMasterLu >> baseline: spec [
+BaselineOfMasterLu >> baseline: spec [ 
     <baseline>
     spec for: #common do: [
         spec
@@ -14,12 +14,13 @@ BaselineOfMasterLu >> baseline: spec [
                 spec repository: 'github://lucretiomsp/phausto:main' 
             ];
             package: 'Coypu' with: [ 
-                spec repository: 'github://lucretiomsp/Coypu' 
+                spec repository: 'github://RedwaneEngels/Coypu' 
             ];
             package: 'CoypuIDE' with: [ 
                 spec repository: 'github://lucretiomsp/CoypuIDE' 
             ];
             package: 'MasterLu'
     ]
-]
 
+
+]
