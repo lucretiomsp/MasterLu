@@ -117,6 +117,35 @@ PhaustoTutorial >> helloPhausto [
 ]
 
 { #category : 'lessons' }
+PhaustoTutorial >> playNotes101 [
+
+	^ Lesson
+		  title: 'PlayNotes 101'
+		  lesson:
+			  '"What if we want to play a melody with this guitar ?"
+"Using a symbol as the argument of a UnitGenerator setter we change its label"
+	synth := ElecGuitar new freq: #ElecGuitarNote; trigger: #ElecGuitarGate.
+	"We create a DSP from this synth"
+	dsp := synth asDsp.
+	"We initialize the DSP"
+	dsp init.
+	dsp start.
+	
+	"We create a Pharo block with the instruction to play a Random MIDI note between 28 and 76 every 125 milliseconds"
+	"We had to change the ElecGuitar freq and gate labels to use Phausto playNote:prefix:dur: method"
+	"This methid is taking care of converting the MIDI note number to a frequency"
+	pattern := [ dsp playNote: (Random new nextIntegerBetween: 28 and: 76 ) prefix: ''ElecGuitar''  dur: 0.11. (Delay   forMilliseconds: 125)  wait ].
+   "We repeat the pattern 64 times"
+   [128 timesRepeat: pattern] fork.
+	dsp stop.
+	
+	MasterLu next.
+	
+	MasterLu next.
+	'
+]
+
+{ #category : 'lessons' }
 PhaustoTutorial >> stereo [
 
 	^ Lesson
@@ -142,7 +171,7 @@ PhaustoTutorial >> stereo [
 PhaustoTutorial >> tutorial [
 
 	^ #( #helloPhausto #stereo #atTheControls #displayTheUI #whatAreUGens
-	      #chuckInto )
+	      #chuckInto #playNotes101 )
 ]
 
 { #category : 'lessons' }
