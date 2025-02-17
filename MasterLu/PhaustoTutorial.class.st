@@ -117,6 +117,43 @@ PhaustoTutorial >> helloPhausto [
 ]
 
 { #category : 'lessons' }
+PhaustoTutorial >> ourFirstSynth [
+
+	^ Lesson
+		  title: 'Our First Synthesiser'
+		  lesson:
+'"lets create our first subtractive synthesiser"
+
+"first we need at least one oscillator"
+oscillator := PulseOsc new.
+"then we need an envelope, in this case a linear Attack-Decay-Sustain-Release envelope"
+envelope := ADSREnv new.
+"also we create a filter, in this case a Moog Vcf lowpass filter"
+filter := MoogVcf new.
+
+"to construct our synthesyser we chuck the Oscillator into the Envelope (hence the Oscillator is multiplied by the evelope - and we chuck this composite Unit Generator into the filter, this means that the composite Unit Generator is the input of the filter".
+
+synth := oscillator => envelope => filter.
+"binary operators have left-to-right precedence in Pharo, so we just place the Unit Generators in chain"
+
+"now we create a steereo DSP"
+dsp := synth stereo asDsp.
+"we initialize the DSP"
+dsp init.
+"we start it"
+dsp start.
+
+"to hear the sound we need to trigger the envelope, so we must open the UI and press the button"
+dsp displayUI .
+
+"now have fun tweaking the sliders, try to understand what happens to the sound".
+
+"and then we stop the DSP before jumping to the next lesson"
+dsp stop.
+MasterLu next.'
+]
+
+{ #category : 'lessons' }
 PhaustoTutorial >> playNotes101 [
 
 	^ Lesson
@@ -171,7 +208,7 @@ PhaustoTutorial >> stereo [
 PhaustoTutorial >> tutorial [
 
 	^ #( #helloPhausto #stereo #atTheControls #displayTheUI #whatAreUGens
-	      #chuckInto #playNotes101 )
+	     #chuckInto #playNotes101 #ourFirstSynth )
 ]
 
 { #category : 'lessons' }
