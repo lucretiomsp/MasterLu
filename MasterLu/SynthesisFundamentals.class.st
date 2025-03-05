@@ -26,18 +26,30 @@ SynthesisFundamentals class >> fiveTypeOfSynthesis [
 
 	| lessonText |
 	lessonText := '
-	# Five Types of Synthesis Modules
+# Five Types of Synthesis Modules
 
-There are tons of synthesizers and software out there, but a really helpful way to approach them is by thinking about categories of modules.  
-We can break down any synthesizer into these 5 Synthesis Modules:  
-- **Generators**  
-- **Combiners**  
-- **Modifiers**  
-- **Time-Variant Controllers (TVCs)**  
-- **Storers (Storage)**  
+There are tons of synthesizers and software out there, but a really helpful way to approach them is by thinking about categories of modules.
+We can break down any synthesizer into these 5 Synthesis Modules:
+- **Generators**
+- **Combiners**
+- **Modifiers**
+- **Time-Variant Controllers (TVCs)**
+- **Storers (Storage)**
 
-## Generators  
-**Generators** are sources of sound. They include `Oscillators`, `Noise` generators, and Samplers (such as `TpSampler`). In essence, they are components that produce audio signals.
+## Generators
+**Generators** are sources of sound. They include `Oscillators`, `PhysicalModels` , `Noise` generators, and Samplers (such as `TpSampler`). In essence, they are components that produce audio signals.
+
+## Combiners
+**Combiners** are synthesis modules that combine audio from two ore more sources. _Mixers_ and _Crossfaders_ are example of **Combiners**. Most synthesizers use multiple *Generators** which  are then combined together to form the output.
+
+## Modifiers
+`Saturators` , _Filters_ (all the subclasses of `PhFilter`) , _Effects_ (such as `FlangerMono`, `CryBaby` or `AutoWah`) are all  **Modifiers**. These synthesis modules change the sound material sent into them.
+
+## Time-Variant Controllers (TVCs)
+These are synthesis s that generates a **control signal**. These are modules such as _Envelope Generators_(like `ADSREnv` or `AREnv`) _Low Frequency Oscillators_(`LFOForModulation`). They generate control signals that vary over time that can modulate parameters and reproduce _vibrato_ (a modulation of the pitch), _tremolo_(a modulation of the amplitude) or _timbre modulation_(which alter harmonic or spectral content).
+
+## Storers (Storage)
+A synthesis module that holds data (such as _wavetables_ , _soundfiles_ and so on)
 
 	'.
 	^ lessonText
