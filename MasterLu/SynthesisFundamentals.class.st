@@ -25,7 +25,34 @@ Class {
 SynthesisFundamentals class >> fiveTypeOfSynthesis [
 
 	| lessonText |
-	
-	lessonText := 'ciao'.
+	lessonText := '
+	# Five Types of Synthesis Modules
+
+There are tons of synthesizers and software out there, but a really helpful way to approach them is by thinking about categories of modules.  
+We can break down any synthesizer into these 5 Synthesis Modules:  
+- **Generators**  
+- **Combiners**  
+- **Modifiers**  
+- **Time-Variant Controllers (TVCs)**  
+- **Storers (Storage)**  
+
+## Generators  
+**Generators** are sources of sound. They include `Oscillators`, `Noise` generators, and Samplers (such as `TpSampler`). In essence, they are components that produce audio signals.
+
+	'.
 	^ lessonText
+]
+
+{ #category : 'as yet unclassified' }
+SynthesisFundamentals class >> lesson1 [
+
+<script>
+self new open.
+]
+
+{ #category : 'initialization' }
+SynthesisFundamentals >> initialize [
+
+	super initialize.
+   self text: (Microdown asRichText: self class fiveTypeOfSynthesis)
 ]
