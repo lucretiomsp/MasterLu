@@ -59,8 +59,6 @@ A synthesis technique that generates sound by playing back pre-recorded audio sa
 ### Linear Arithmetic Synthesis
 A synthesis technique invented by [Roland Corporation](https://en.wikipedia.org/wiki/Roland_Corporation) that combines sample-based and subtractive synthesis with the sample sound providing the initial [transient](https://en.wikipedia.org/wiki/Transient_(acoustics)) of the sound. `ModalPercussion` , `StringInstruments` and `WindInstruments` subclasses are examples of _Physical-Modeling Synthesis_.
 
-
-
 '.
 	^ lessonText
 ]
