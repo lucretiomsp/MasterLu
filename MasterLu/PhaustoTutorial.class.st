@@ -46,22 +46,16 @@ MasterLu next
 PhaustoTutorial >> additiveSynthesis2 [
 
 	^ Lesson
-		  title: 'Additive Synthesis with a Collection of Unit Generators'
+		  title: 'Additive Synthesis with an Array of Unit Generators'
 		  lesson:
-			  '
-"Additive synthesis creates complex sounds by combining multiple simple waveforms—typically sine waves—each with its own frequency, amplitude, and phase. It is fundamentally based on Fourier''s theorem"
+			  '	
+"Alternativeky you can create an Array of Sine Oscillators"
+detuning := 14.
+groupOfSine :=( 1 to: 10) collect: [ :i | (SineOsc new freq: 200 + (i * detuning); uLevel: 0.05) ].
 
-"We can stack a set of SineOsc leveraging Pharo basic syntax for Intervals and Phausto sum (+) operator for summing signals"
+"we send the message asSumOfUgen to the array to sum all the UGen in the array".
 
-"first we create the first Sine sScillator"
-sine1 := SineOsc new freq: 200; uLevel: 0.5.
-
-"we combine it in parallel with other 9, detuned by 2Hz and with the same amplitude (uLevel)"
-detuning := 90.
-( 1 to: 9) do: [ :i | sine1  := sine1 + (SineOsc new freq: 200 + (i * detuning); uLevel: 0.05) ].
-"sine1 has become the sum  of 10 detuned Sine Oscillators"
-"we create a stereo ds with them".
-dsp := sine1 stereo asDsp.
+dsp := groupOfSine asSumOfUGen stereo asDsp.
 "we initialize the dsp".
 dsp init.
 "we start it."
@@ -69,10 +63,10 @@ dsp start.
 "we stop it"
 dsp stop.
 
-"Now try to change the detune value or the amplitudes or to not define the frequency value and change it in the UI"
 
 MasterLu next
 
+	
 	'
 ]
 
@@ -276,7 +270,7 @@ PhaustoTutorial >> stereo [
 PhaustoTutorial >> tutorial [
 
 	^ #( #helloPhausto #stereo #atTheControls #displayTheUI #whatAreUGens
-	     #chuckInto #playNotes101 #ourFirstSynth #additiveSynthesis )
+	     #chuckInto #playNotes101 #ourFirstSynth #additiveSynthesis #additiveSynthesis2)
 ]
 
 { #category : 'lessons' }
