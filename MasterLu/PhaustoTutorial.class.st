@@ -45,9 +45,9 @@ MasterLu next
 { #category : 'lessons' }
 PhaustoTutorial >> additiveSynthesis2 [
 
-	^ Lesson title: 'Additive Synthesis with an Array of Unit Generators'
-		  lesson:
-			  '
+	^ Lesson
+		  title: 'Additive Synthesis with an Array of Unit Generators'
+		  lesson: '
 "Additive synthesis creates complex sounds by combining multiple simple waveforms—typically sine waves—each with its own frequency, amplitude, and phase. It is fundamentally based on Fourier''s theorem"
 			  
 detuning := 14.
@@ -59,12 +59,8 @@ groupOfSine :=( 1 to: 10) collect: [ :i | (SineOsc new freq: 200 + (i * detuning
 "first we create the first Sine sScillator"
 sine1 := SineOsc new freq: 200; uLevel: 0.5.
 
-"we combine it in parallel with other 9, detuned by 2Hz and with the same amplitude (uLevel)"
-detuning := 90.
-( 1 to: 9) do: [ :i | sine1  := sine1 + (SineOsc new freq: 200 + (i * detuning); uLevel: 0.05) ].
-"sine1 has become the sum  of 10 detuned Sine Oscillators"
-"we create a stereo ds with them".
-dsp := sine1 stereo asDsp.
+"we create a stereo dsp with the froyp  of Sine OScillators".
+
 dsp := groupOfSine asSumOfUGen stereo asDsp.
 "we initialize the dsp".
 dsp init.
@@ -79,7 +75,6 @@ MasterLu next
 
 	
 	'
-	
 ]
 
 { #category : 'lessons' }
@@ -271,8 +266,7 @@ PhaustoTutorial >> playNotes101 [
 
 	^ Lesson
 		  title: 'PlayNotes 101'
-		  lesson:
-			  '"What if we want to play a melody with this guitar ?"
+		  lesson: '"What if we want to play a melody with this guitar ?"
 "Using a symbol as the argument of a UnitGenerator setter we change its label"
 	synth := ElecGuitar new freq: #ElecGuitarNote; trigger: #ElecGuitarGate.
 	"We create a DSP from this synth"
@@ -283,14 +277,12 @@ PhaustoTutorial >> playNotes101 [
 	
 	"We create a Pharo block with the instruction to play a Random MIDI note between 28 and 76 every 125 milliseconds"
 	"We had to change the ElecGuitar freq and gate labels to use Phausto playNote:prefix:dur: method"
-	"This methid is taking care of converting the MIDI note number to a frequency"
+	"This method is taking care of converting the MIDI note number to a frequency"
 	pattern := [ dsp playNote: (Random new nextIntegerBetween: 28 and: 76 ) prefix: ''ElecGuitar''  dur: 0.11. (Delay   forMilliseconds: 125)  wait ].
    "We repeat the pattern 64 times"
    [128 timesRepeat: pattern] fork.
 	dsp stop.
-	
-	MasterLu next.
-	
+
 	MasterLu next.
 	'
 ]
