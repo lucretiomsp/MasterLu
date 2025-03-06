@@ -117,8 +117,10 @@ SynthesisFundamentals class >> lesson2 [
 { #category : 'example' }
 SynthesisFundamentals class >> lesson3 [
 
-<script>
-self new content: self timeVariantControllers ; open.
+	<script>
+	self new
+		content: self timeVariantControllers;
+		open
 ]
 
 { #category : 'accessing - text' }

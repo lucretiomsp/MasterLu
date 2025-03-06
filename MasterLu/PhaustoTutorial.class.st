@@ -46,24 +46,20 @@ MasterLu next
 PhaustoTutorial >> additiveSynthesis2 [
 
 	^ Lesson
-		  title: 'Additive Synthesis with an Array of Unit Generators'
-		  lesson:
-			  '	
-"Alternativeky you can create an Array of Sine Oscillators"
-detuning := 14.
-groupOfSine :=( 1 to: 10) collect: [ :i | (SineOsc new freq: 200 + (i * detuning); uLevel: 0.05) ].
-
-"we send the message asSumOfUgen to the array to sum all the UGen in the array".
-
-dsp := groupOfSine asSumOfUGen stereo asDsp.
-"we initialize the dsp".
+		  title: 'TpSampler basics'
+		  lesson: '	
+"TpSampler is a quick-and-dirty multisampler created as part of TurboPhausto. When we create a new instance of TpSampler, we need to provide a path to a folder containing only .wav or .aiff samples. If you drag and drop a folder into the playground, Phausto will automatically generate the path as a string for you."
+sp := TpSampler new pathToFolder: ''/Users/domenicocipriani/MyStuff/samples/SP1200 From Mars/WAV/Drums/Sp1200-Kits/Factory Kit 1''.
+"we create a stereo dsp from the sampler"
+dsp := sp stereo asDsp.
+"we initialize it".
 dsp init.
-"we start it."
+"we start it".
 dsp start.
-"we stop it"
-dsp stop.
-
-
+"we can play it from its UI".
+dsp displayUI
+"click on the gate button to hear a sample, change the SamplerIndex to hear a different sound, change the SamplerNote to change its frequency"
+"you may notice that if SamplerIndex > 10 , we dont hear any sound. that because the folder contains only 10 samples" 
 MasterLu next
 
 	
@@ -270,7 +266,8 @@ PhaustoTutorial >> stereo [
 PhaustoTutorial >> tutorial [
 
 	^ #( #helloPhausto #stereo #atTheControls #displayTheUI #whatAreUGens
-	     #chuckInto #playNotes101 #ourFirstSynth #additiveSynthesis #additiveSynthesis2)
+	     #chuckInto #playNotes101 #ourFirstSynth #additiveSynthesis
+	     #additiveSynthesis2 #tpSamplerBasics)
 ]
 
 { #category : 'lessons' }
