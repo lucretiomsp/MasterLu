@@ -57,9 +57,19 @@ dsp init.
 "we start it".
 dsp start.
 "we can play it from its UI".
-dsp displayUI
-"click on the gate button to hear a sample, change the SamplerIndex to hear a different sound, change the SamplerNote to change its frequency"
-"you may notice that if SamplerIndex > 10 , we dont hear any sound. that because the folder contains only 10 samples" 
+dsp displayUI.
+
+"Click the gate button to hear a sample. Change the SamplerIndex to hear a different sound, and adjust the SamplerNote to change its pitch.
+You may notice that if SamplerIndex is greater than 10, no sound is played. This is because the folder contains only 10 samples."
+
+"Alternatively, we can close the UI and play the TpSampler algorithmically."
+[128 timesRepeat: [ dsp trig: ''TpSamplerGate'' . dsp setValue: (Random new nextIntegerBetween: 1  and: 10 ) parameter: ''TpSamplerIndex'' . (Random new nextIntegerBetween: 80 and: 310 ) milliSeconds wait ]] fork.
+
+"Or we can play a random melody using the same sample:"
+dsp setValue: 8 parameter: ''TpSamplerIndex'' .
+[128 timesRepeat: [ dsp playNote: (Random new nextIntegerBetween: 35  and: 78 ) prefix: ''TpSampler''  dur: 0.1 . 110 milliSeconds wait ]] fork.
+
+
 MasterLu next
 
 	
