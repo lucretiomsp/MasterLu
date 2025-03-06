@@ -49,7 +49,8 @@ PhaustoTutorial >> additiveSynthesis2 [
 		  title: 'TpSampler basics'
 		  lesson: '	
 "TpSampler is a quick-and-dirty multisampler created as part of TurboPhausto. When we create a new instance of TpSampler, we need to provide a path to a folder containing only .wav or .aiff samples. If you drag and drop a folder into the playground, Phausto will automatically generate the path as a string for you."
-sp := TpSampler new pathToFolder: ''/Users/domenicocipriani/MyStuff/samples/SP1200 From Mars/WAV/Drums/Sp1200-Kits/Factory Kit 1''.
+"To follow this example please download the MoofLodSamples folder in the Phausto GitHb repository and place it into your Documents folder."
+sp := TpSampler new pathToFolder: ''/Users/domenicocipriani/Documents/MoofLodSamples''.
 "we create a stereo dsp from the sampler"
 dsp := sp stereo asDsp.
 "we initialize it".
@@ -59,8 +60,6 @@ dsp start.
 "we can play it from its UI".
 dsp displayUI.
 
-"Click the gate button to hear a sample. Change the SamplerIndex to hear a different sound, and adjust the SamplerNote to change its pitch.
-You may notice that if SamplerIndex is greater than 10, no sound is played. This is because the folder contains only 10 samples."
 
 "Alternatively, we can close the UI and play the TpSampler algorithmically."
 [128 timesRepeat: [ dsp trig: ''TpSamplerGate'' . dsp setValue: (Random new nextIntegerBetween: 1  and: 10 ) parameter: ''TpSamplerIndex'' . (Random new nextIntegerBetween: 80 and: 310 ) milliSeconds wait ]] fork.
@@ -68,6 +67,11 @@ You may notice that if SamplerIndex is greater than 10, no sound is played. This
 "Or we can play a random melody using the same sample:"
 dsp setValue: 8 parameter: ''TpSamplerIndex'' .
 [128 timesRepeat: [ dsp playNote: (Random new nextIntegerBetween: 35  and: 78 ) prefix: ''TpSampler''  dur: 0.1 . 110 milliSeconds wait ]] fork.
+
+"stop and destroy the dsp"
+dsp stop.
+dsp destroy .
+
 
 
 MasterLu next
