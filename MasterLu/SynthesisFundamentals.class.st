@@ -107,8 +107,11 @@ self new open.
 { #category : 'example' }
 SynthesisFundamentals class >> lesson2 [
 
-<script>
-self new content: self fiveTypeOfSynthesis; open.
+	<script>
+	self new
+		content: self fiveTypeOfSynthesis;
+	
+		open
 ]
 
 { #category : 'example' }
@@ -157,12 +160,12 @@ SynthesisFundamentals >> content [
 { #category : 'accessing' }
 SynthesisFundamentals >> content: aString [
 
-content := (Microdown asRichText: aString )
+	content := self text: (Microdown asRichText: aString)
 ]
 
 { #category : 'initialization' }
 SynthesisFundamentals >> initialize [
 
 	super initialize.
-   self text: (Microdown asRichText: self class fiveTypeOfSynthesis)
+	self content: self class  fiveTypeOfSynthesisModules 
 ]
