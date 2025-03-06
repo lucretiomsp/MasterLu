@@ -79,7 +79,15 @@ We can break down any synthesizer into these 5 Synthesis Modules:
 - **Storers (Storage)**
 
 ## Generators
-**Generators** are sources of sound. They include `Oscillators`, `PhysicalModels` , `Noise` generators, and Samplers (such as `TpSampler`). In essence, they are components that produce audio signals.
+**Generators** are sources of sound. They include `Oscillator`, _PhysicalModels_ as `ModalPercussion`, `Noise` generators, and Samplers (such as `TpSampler`). In essence, they are components that produce audio signals.
+```language=pharo
+"Listen the difference between the basic waveforms"
+
+"Create the 4 oscillators"
+sine := SineOsc new.
+tri := TriOsc new.
+sqr := SquareOsc new.
+saw := SawOsc new.
 
 ## Combiners
 **Combiners** are synthesis modules that combine audio from two ore more sources. _Mixers_ and _Crossfaders_ are example of **Combiners**. Most synthesizers use multiple *Generators** which  are then combined together to form the output.

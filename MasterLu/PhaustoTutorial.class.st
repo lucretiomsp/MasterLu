@@ -262,6 +262,32 @@ MasterLu next.'
 ]
 
 { #category : 'lessons' }
+PhaustoTutorial >> pitchEnvelope [
+
+	^ Lesson title: 'Pitch Envelope' lesson: '	
+"Let see hw we can use an ADSR Envelope to modulate a steady Triangular waveform"
+"The ADSR signal is multiplied by a constant value to scale the pitch modulation."
+pitchEnv := 200 asBox * ADSREnv new.
+
+"This Pitch Envelope is added to a starting frequency (an offset)."
+osc := TriOsc new freq: (100 asBox + pitchEnv ).
+
+"We crate a stero dsp, we initialize it, we start it."
+dsp := osc stereo asDsp.
+dsp init. 
+dsp start.
+
+"We can interact with the DSP from its UI. Press the trigger to hear the effects of the Pitch Envelope."
+dsp displayUI.
+"And we  stop it after."
+dsp stop.
+
+
+MasterLu next
+	'
+]
+
+{ #category : 'lessons' }
 PhaustoTutorial >> playNotes101 [
 
 	^ Lesson
@@ -350,7 +376,7 @@ PhaustoTutorial >> tutorial [
 
 	^ #( #helloPhausto #stereo #atTheControls #displayTheUI #whatAreUGens
 	     #chuckInto #playNotes101 #ourFirstSynth #additiveSynthesis
-	     #additiveSynthesis2 #tpSamplerBasics)
+	     #additiveSynthesis2 #tpSamplerBasics #basicWaveforms #pitchEnvelope )
 ]
 
 { #category : 'lessons' }
