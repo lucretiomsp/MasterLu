@@ -45,39 +45,41 @@ MasterLu next
 { #category : 'lessons' }
 PhaustoTutorial >> additiveSynthesis2 [
 
-	^ Lesson
-		  title: 'TpSampler basics'
-		  lesson: '	
-"TpSampler is a quick-and-dirty multisampler created as part of TurboPhausto. When we create a new instance of TpSampler, we need to provide a path to a folder containing only .wav or .aiff samples. If you drag and drop a folder into the playground, Phausto will automatically generate the path as a string for you."
-"To follow this example please download the MoofLodSamples folder in the Phausto GitHb repository and place it into your Documents folder."
-sp := TpSampler new pathToFolder: ''/Users/domenicocipriani/Documents/MoofLodSamples''.
-"we create a stereo dsp from the sampler"
-dsp := sp stereo asDsp.
-"we initialize it".
+	^ Lesson title: 'Additive Synthesis with an Array of Unit Generators'
+		  lesson:
+			  '
+"Additive synthesis creates complex sounds by combining multiple simple waveforms—typically sine waves—each with its own frequency, amplitude, and phase. It is fundamentally based on Fourier''s theorem"
+			  
+detuning := 14.
+groupOfSine :=( 1 to: 10) collect: [ :i | (SineOsc new freq: 200 + (i * detuning); uLevel: 0.05) ].
+
+"We can stack a set of SineOsc leveraging Pharo basic syntax for Intervals and Phausto sum (+) operator for summing signals"
+"we send the message asSumOfUgen to the array to sum all the UGen in the array".
+
+"first we create the first Sine sScillator"
+sine1 := SineOsc new freq: 200; uLevel: 0.5.
+
+"we combine it in parallel with other 9, detuned by 2Hz and with the same amplitude (uLevel)"
+detuning := 90.
+( 1 to: 9) do: [ :i | sine1  := sine1 + (SineOsc new freq: 200 + (i * detuning); uLevel: 0.05) ].
+"sine1 has become the sum  of 10 detuned Sine Oscillators"
+"we create a stereo ds with them".
+dsp := sine1 stereo asDsp.
+dsp := groupOfSine asSumOfUGen stereo asDsp.
+"we initialize the dsp".
 dsp init.
-"we start it".
+"we start it."
 dsp start.
-"we can play it from its UI".
-dsp displayUI.
-
-
-"Alternatively, we can close the UI and play the TpSampler algorithmically."
-[128 timesRepeat: [ dsp trig: ''TpSamplerGate'' . dsp setValue: (Random new nextIntegerBetween: 1  and: 10 ) parameter: ''TpSamplerIndex'' . (Random new nextIntegerBetween: 80 and: 310 ) milliSeconds wait ]] fork.
-
-"Or we can play a random melody using the same sample:"
-dsp setValue: 8 parameter: ''TpSamplerIndex'' .
-[128 timesRepeat: [ dsp playNote: (Random new nextIntegerBetween: 35  and: 78 ) prefix: ''TpSampler''  dur: 0.1 . 110 milliSeconds wait ]] fork.
-
-"stop and destroy the dsp"
+"we stop it"
 dsp stop.
-dsp destroy .
 
-
+"Now try to change the detune value or the amplitudes or to not define the frequency value and change it in the UI"
 
 MasterLu next
 
 	
 	'
+	
 ]
 
 { #category : 'lessons' }
@@ -105,6 +107,45 @@ PhaustoTutorial >> atTheControls [
 	"We can check the parameters of a UnitGenerator in its class comments, or with:"
 	dsp traceAllParams.
 	MasterLu next.
+	'
+]
+
+{ #category : 'lessons' }
+PhaustoTutorial >> basicWaveforms [
+
+	^ Lesson title: 'Basic waveforms' lesson: '	
+"Listen the difference between the basic waveforms"
+
+"Create the 4 oscillators"
+sine := SineOsc new.
+tri := TriOsc new.
+sqr := SquareOsc new.
+saw := SawOsc new.
+
+"Create a NumericalEntry UIPatameter to switch between waveforms. Only UI Parameters can ve changed in real time!"
+index := PhNumEntry new label: ''Wave'' init: 0 min: 0 max: 3 step: 1.
+"Combine the 4 oscillators in parallel using the comma (,) operator."
+oscillators := sine , tri , sqr , saw.
+
+"Create a selector by combining the NumEntry UI parameter with the oscillators and connecting them to the selector."
+"This connection closely resembles Faust core syntax. You can use it for low-level connections, but we always recommend using Phausto''s simpler API when possible."
+selector :=  index , oscillators connectTo: PhSelect4 new. 
+
+
+"Create the DSP, initialize it, start it, and display the UI."
+dsp := selector stereo asDsp.
+dsp init.
+dsp start.
+dsp displayUI.
+
+"Stop and destroy the DSP to move to the next lesson."
+dsp stop. 
+dsp destroy
+
+
+MasterLu next
+
+	
 	'
 ]
 
@@ -273,6 +314,42 @@ PhaustoTutorial >> stereo [
 	dsp stop.
 	
 	MasterLu next.
+	'
+]
+
+{ #category : 'lessons' }
+PhaustoTutorial >> tpSamplerBasics [
+
+	^ Lesson title: 'TpSampler basics' lesson: '	
+"TpSampler is a quick-and-dirty multisampler created as part of TurboPhausto. When we create a new instance of TpSampler, we need to provide a path to a folder containing only .wav or .aiff samples. If you drag and drop a folder into the playground, Phausto will automatically generate the path as a string for you."
+"To follow this example please download the MoofLodSamples folder in the Phausto GitHb repository and place it into your Documents folder."
+sp := TpSampler new pathToFolder: ''/Users/domenicocipriani/Documents/MoofLodSamples''.
+"we create a stereo dsp from the sampler"
+dsp := sp stereo asDsp.
+"we initialize it".
+dsp init.
+"we start it".
+dsp start.
+"we can play it from its UI".
+dsp displayUI.
+
+
+"Alternatively, we can close the UI and play the TpSampler algorithmically."
+[128 timesRepeat: [ dsp trig: ''TpSamplerGate'' . dsp setValue: (Random new nextIntegerBetween: 1  and: 10 ) parameter: ''TpSamplerIndex'' . (Random new nextIntegerBetween: 80 and: 310 ) milliSeconds wait ]] fork.
+
+"Or we can play a random melody using the same sample:"
+dsp setValue: 8 parameter: ''TpSamplerIndex'' .
+[128 timesRepeat: [ dsp playNote: (Random new nextIntegerBetween: 35  and: 78 ) prefix: ''TpSampler''  dur: 0.1 . 110 milliSeconds wait ]] fork.
+
+"stop and destroy the dsp"
+dsp stop.
+dsp destroy .
+
+
+
+MasterLu next
+
+	
 	'
 ]
 
