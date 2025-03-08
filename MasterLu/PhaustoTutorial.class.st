@@ -56,8 +56,7 @@ groupOfSine :=( 1 to: 10) collect: [ :i | (SineOsc new freq: 200 + (i * detuning
 "We can stack a set of SineOsc leveraging Pharo basic syntax for Intervals and Phausto sum (+) operator for summing signals"
 "we send the message asSumOfUgen to the array to sum all the UGen in the array".
 
-"first we create the first Sine sScillator"
-sine1 := SineOsc new freq: 200; uLevel: 0.5.
+
 
 "we create a stereo dsp with the froyp  of Sine OScillators".
 

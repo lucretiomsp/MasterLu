@@ -157,6 +157,9 @@ _ADSR_ Envelope is very common because it is especially useful for shaping ampli
 ## Low Frequency Oscillators (LFOs)
 LFOs (such as `LFOForModulation` subclasses) are modules that produce _periodic_ controls signal at specified sub-audio — that is, frequencies below 20 Hz, which is the lower threshold of the human [hearing range](https://en.wikipedia.org/wiki/Hearing_range) ). While they don’t produce audible sound, their slow oscillations can modulate various parameters in a synthesizer, such as pitch, amplitude, and filter frequency. This allows LFOs to create dynamic changes in sound over time, adding movement and texture to a sound.
 
+```pharoeval
+Transcript new open.
+```
 	'.
 	^ lessonText
 ]
