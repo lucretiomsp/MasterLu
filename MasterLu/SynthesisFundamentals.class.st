@@ -79,15 +79,7 @@ We can break down any synthesizer into these 5 Synthesis Modules:
 - **Storers (Storage)**
 
 ## Generators
-**Generators** are sources of sound. They include `Oscillator`, _PhysicalModels_ as `ModalPercussion`, `Noise` generators, and Samplers (such as `TpSampler`). In essence, they are components that produce audio signals.
-```language=pharo
-"Listen the difference between the basic waveforms"
-
-"Create the 4 oscillators"
-sine := SineOsc new.
-tri := TriOsc new.
-sqr := SquareOsc new.
-saw := SawOsc new.
+**Generators** are sources of sound. They include `Oscillators`, `PhysicalModels` , `Noise` generators, and Samplers (such as `TpSampler`). In essence, they are components that produce audio signals.
 
 ## Combiners
 **Combiners** are synthesis modules that combine audio from two ore more sources. _Mixers_ and _Crossfaders_ are example of **Combiners**. Most synthesizers use multiple *Generators** which  are then combined together to form the output.
@@ -157,9 +149,7 @@ _ADSR_ Envelope is very common because it is especially useful for shaping ampli
 ## Low Frequency Oscillators (LFOs)
 LFOs (such as `LFOForModulation` subclasses) are modules that produce _periodic_ controls signal at specified sub-audio — that is, frequencies below 20 Hz, which is the lower threshold of the human [hearing range](https://en.wikipedia.org/wiki/Hearing_range) ). While they don’t produce audible sound, their slow oscillations can modulate various parameters in a synthesizer, such as pitch, amplitude, and filter frequency. This allows LFOs to create dynamic changes in sound over time, adding movement and texture to a sound.
 
-```pharoeval
-Transcript new open.
-```
+
 	'.
 	^ lessonText
 ]
@@ -181,4 +171,11 @@ SynthesisFundamentals >> initialize [
 
 	super initialize.
 	self content: self class  fiveTypeOfSynthesisModules 
+]
+
+{ #category : 'initialization' }
+SynthesisFundamentals >> initializeWindow: aWindowPresenter [
+
+	aWindowPresenter initialExtent: 900 @ 900.
+	aWindowPresenter title: 'Synthesis Fundamentals'
 ]
