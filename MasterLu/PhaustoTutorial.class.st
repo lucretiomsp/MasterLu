@@ -256,6 +256,44 @@ PhaustoTutorial >> helloPhausto [
 ]
 
 { #category : 'lessons' }
+PhaustoTutorial >> modalSynthesis [
+
+	^ Lesson
+		  title: 'Modal Syntheis basics'
+		  lesson: '
+"Modal synthesis is a type of additive synthesis that models sound by simulating the natural resonant modes of physical objects. In essence, it breaks down a sound into a series of resonant frequencies, each with its own amplitude and decay characteristics. This approach is particularly effective for recreating sounds of percussive and resonant objects like bells, drums, and strings."
+	  
+"first we define trig, that will excite our modes"	
+trig := Pulse new period: 0.18.
+"we define the modes frequencies in Hertz"
+freqs := #(230 600 700 920).
+"we define the modes amplitudes"
+gains := #(0.5 0.4 0.2 0.5).
+"we define the deacy rates, a.k.a t60s"
+t60s := #(0.2 0.5 0.3 0.6).
+"we create an array of Mode Filters"
+modes := (1 to: 4) collect: [ :i |  ModeFilter new freq: (freqs at: i) ; gain: (gains at: i) ; t60: (t60s at: i); input: trig].
+
+"we deifine our synth as a sum of UnitGenerator"
+synth := modes asSumOfUGen.
+
+"we create the stero dsp, we initialize and start it"
+dsp := synth asDsp.
+dsp init.
+dsp start.
+"we interact with its UI"
+dsp displayUI.
+"we stop it whn we are done"
+dsp stop.
+
+
+MasterLu next
+
+	
+	'
+]
+
+{ #category : 'lessons' }
 PhaustoTutorial >> ourFirstSynth [
 
 	^ Lesson
@@ -407,7 +445,7 @@ PhaustoTutorial >> tutorial [
 
 	^ #( #helloPhausto #stereo #atTheControls #displayTheUI #whatAreUGens
 	     #chuckInto #playNotes101 #ourFirstSynth #additiveSynthesis
-	     #additiveSynthesis2 #tpSamplerBasics #basicWaveforms
+	     #additiveSynthesis2 #modalSynthesis #tpSamplerBasics #basicWaveforms
 	     #pitchEnvelope #essentialFMSynthesis )
 ]
 
