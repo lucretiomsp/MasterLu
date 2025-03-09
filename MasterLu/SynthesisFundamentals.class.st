@@ -15,7 +15,8 @@ Class {
 	#name : 'SynthesisFundamentals',
 	#superclass : 'MicTextPresenter',
 	#instVars : [
-		'content'
+		'content',
+		'stopButton'
 	],
 	#classVars : [
 		'MLuInstance'
@@ -170,7 +171,13 @@ SynthesisFundamentals >> content: aString [
 SynthesisFundamentals >> initialize [
 
 	super initialize.
-	self content: self class  fiveTypeOfSynthesisModules 
+	self content: self class fiveTypeOfSynthesisModules
+]
+
+{ #category : 'initialization - deprecated' }
+SynthesisFundamentals >> initializePresenter [ 
+
+stopButton := self newButton .
 ]
 
 { #category : 'initialization' }
