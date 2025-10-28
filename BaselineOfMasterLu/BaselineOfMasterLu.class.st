@@ -11,13 +11,13 @@ BaselineOfMasterLu >> baseline: spec [
     spec for: #common do: [
         spec
             package: 'Phausto' with: [ 
-                spec repository: 'github://lucretiomsp/phausto' 
+                spec repository: 'github://lucretiomsp/phausto:main' 
             ];
             package: 'Coypu' with: [ 
-                spec repository: 'github://lucretiomsp/Coypu' 
+                spec repository: 'github://lucretiomsp/Coypu:master' 
             ];
             package: 'CoypuIDE' with: [ 
-                spec repository: 'github://lucretiomsp/CoypuIDE' 
+                spec repository: 'github://lucretiomsp/CoypuIDE:main' 
             ];
             package: 'MasterLu'
     ]
