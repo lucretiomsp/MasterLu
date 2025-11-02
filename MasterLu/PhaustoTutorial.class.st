@@ -11,10 +11,7 @@ Class {
 { #category : 'lessons' }
 PhaustoTutorial >> additiveSynthesis [
 
-	^ Lesson
-		  title: 'Additive Synthesis basics'
-		  lesson:
-			  '
+	^ Lesson title: 'Additive Synthesis basics' lesson: '
 "Additive synthesis creates complex sounds by combining multiple simple waveforms—typically sine waves—each with its own frequency, amplitude, and phase. It is fundamentally based on Fourier''s theorem"
 
 "We can stack a set of SineOsc leveraging Pharo basic syntax for Intervals and Phausto sum (+) operator for summing signals"
@@ -37,7 +34,8 @@ dsp stop.
 
 "Now try to change the detune value or the amplitudes or to not define the frequency value and change it in the UI"
 
-MasterLu next
+MasterLu next.
+MasterLu previous.
 
 	'
 ]
@@ -45,9 +43,7 @@ MasterLu next
 { #category : 'lessons' }
 PhaustoTutorial >> additiveSynthesis2 [
 
-	^ Lesson
-		  title: 'Additive Synthesis with an Array of Unit Generators'
-		  lesson: '
+	^ Lesson title: 'Additive Synthesis with an Array of Unit Generators' lesson: '
 "Additive synthesis creates complex sounds by combining multiple simple waveforms—typically sine waves—each with its own frequency, amplitude, and phase. It is fundamentally based on Fourier''s theorem"
 			  
 detuning := 14.
@@ -70,7 +66,8 @@ dsp stop.
 
 "Now try to change the detune value or the amplitudes or to not define the frequency value and change it in the UI"
 
-MasterLu next
+MasterLu next.
+MasterLu previous.
 
 	
 	'
@@ -79,10 +76,7 @@ MasterLu next
 { #category : 'lessons' }
 PhaustoTutorial >> atTheControls [
 
-	^ Lesson
-		  title: 'At the Controls'
-		  lesson:
-			  '"We create a new Pulse Oscillator, a Square Oscillator with variable Duty Cycle"
+	^ Lesson title: 'At the Controls' lesson: '"We create a new Pulse Oscillator, a Square Oscillator with variable Duty Cycle"
 	"Execute the following lines one at the time"
 	pulse := PulseOsc new.
 	"We create a DSP from that Oscillator"
@@ -101,6 +95,7 @@ PhaustoTutorial >> atTheControls [
 	"We can check the parameters of a UnitGenerator in its class comments, or with:"
 	dsp traceAllParams.
 	MasterLu next.
+	MasterLu previous.
 	'
 ]
 
@@ -137,7 +132,8 @@ dsp stop.
 dsp destroy
 
 
-MasterLu next
+MasterLu next.
+MasterLu previous.
 
 	
 	'
@@ -146,10 +142,7 @@ MasterLu next
 { #category : 'lessons' }
 PhaustoTutorial >> chuckInto [
 
-	^ Lesson
-		  title: 'chuckInto'
-		  lesson:
-			  '"We can connect Unit Generators with the ChucK operator =>"
+	^ Lesson title: 'chuckInto' lesson: '"We can connect Unit Generators with the ChucK operator =>"
 			  "We kindly borrowed this operator from our friend audio programming language called ChucK"
 			  "https://chuck.stanford.edu"
 	"Execute the following lines one at the time"
@@ -169,6 +162,7 @@ PhaustoTutorial >> chuckInto [
 	"Close the UI by pressong the X on its top left corner"
 	"We will see ho to connect different classes of Unit Generators in the folowing lessons"
 	MasterLu next.
+	MasterLu previous.
 	'
 ]
 
@@ -198,16 +192,14 @@ PhaustoTutorial >> displayTheUI [
 	"Now You can try to start again from line 3 , substituting Djembe with Marimba, an idiophone with origins in the sub-Saharian Africa "
 	
 	MasterLu next.
+	MasterLu previous.
 	'
 ]
 
 { #category : 'lessons' }
 PhaustoTutorial >> essentialFMSynthesis [
 
-	^ Lesson
-		  title: '2-OPerators FM Synthesis'
-		  lesson:
-'"2 operators FM Synthesis with Dx7 operators"
+	^ Lesson title: '2-OPerators FM Synthesis' lesson: '"2 operators FM Synthesis with Dx7 operators"
 "There are many ways to achieve Frequency Modulation (FM) synthesis in Phausto; one is to use the built-in Dx7 operators."
 "First we define a knob to set frequency"
 frequencyKnob := PhHSlider new label: ''Freq'' values: #(100 20 4000 0.1).
@@ -229,6 +221,7 @@ dsp displayUI .
 dsp stop.
 dsp destroy
 	MasterLu next.
+	MasterLu previous.
 	
 	'
 ]
@@ -285,7 +278,8 @@ dsp displayUI.
 dsp stop.
 
 
-MasterLu next
+MasterLu next.
+MasterLu previous.
 
 	
 	'
@@ -294,10 +288,7 @@ MasterLu next
 { #category : 'lessons' }
 PhaustoTutorial >> ourFirstSynth [
 
-	^ Lesson
-		  title: 'Our First Synthesiser'
-		  lesson:
-'"lets create our first subtractive synthesiser"
+	^ Lesson title: 'Our First Synthesiser' lesson: '"lets create our first subtractive synthesiser"
 
 "first we need at least one oscillator"
 oscillator := PulseOsc new.
@@ -325,7 +316,8 @@ dsp displayUI .
 
 "and then we stop the DSP before jumping to the next lesson"
 dsp stop.
-MasterLu next.'
+MasterLu next.
+MasterLu previous.'
 ]
 
 { #category : 'lessons' }
@@ -350,16 +342,15 @@ dsp displayUI.
 dsp stop.
 
 
-MasterLu next
+MasterLu next.
+MasterLu previous.
 	'
 ]
 
 { #category : 'lessons' }
 PhaustoTutorial >> playNotes101 [
 
-	^ Lesson
-		  title: 'PlayNotes 101'
-		  lesson: '"What if we want to play a melody with this guitar ?"
+	^ Lesson title: 'PlayNotes 101' lesson: '"What if we want to play a melody with this guitar ?"
 "Using a symbol as the argument of a UnitGenerator setter we change its label"
 	synth := ElecGuitar new freq: #ElecGuitarNote; trigger: #ElecGuitarGate.
 	"We create a DSP from this synth"
@@ -377,16 +368,14 @@ PhaustoTutorial >> playNotes101 [
 	dsp stop.
 
 	MasterLu next.
+	MasterLu previous.
 	'
 ]
 
 { #category : 'lessons' }
 PhaustoTutorial >> stereo [
 
-	^ Lesson
-		  title: 'Hello Stereo'
-		  lesson:
-			  '"We create a new Sawtooth oscillator, but with a stereo output"
+	^ Lesson title: 'Hello Stereo' lesson: '"We create a new Sawtooth oscillator, but with a stereo output"
 	"Execute the following lines one at the time"
 	saw := SawOsc new.
 	"We create a stereo DSP from that Oscillator"
@@ -399,6 +388,7 @@ PhaustoTutorial >> stereo [
 	dsp stop.
 	
 	MasterLu next.
+	MasterLu previous.
 	'
 ]
 
@@ -432,7 +422,8 @@ dsp destroy .
 
 
 
-MasterLu next
+MasterLu next.
+MasterLu previous.
 
 	
 	'
@@ -450,10 +441,7 @@ PhaustoTutorial >> tutorial [
 { #category : 'lessons' }
 PhaustoTutorial >> whatAreUGens [
 
-	^ Lesson
-		  title: 'Unit Generators 101'
-		  lesson:
-			  '"Unit Generators are the basic unit to create sounds in Phausto."
+	^ Lesson title: 'Unit Generators 101' lesson: '"Unit Generators are the basic unit to create sounds in Phausto."
 			  "One or more Unit Generator connected together can become a DSP, a Digital SIgnal Processor."
 			  "A DSP is a program that computes sounds"
 	"Execute the following lines one at the time"
@@ -473,5 +461,6 @@ PhaustoTutorial >> whatAreUGens [
 	"Unit Generators are the building blocks of synthesis; they are oscillators, noise generators, physical models, filters, envelopes, effects."
 	"The concept of Unit Generator was first developed by Max Mathews at Bell Labs in 1950s"
 	MasterLu next.
+	MasterLu previous.
 	'
 ]
