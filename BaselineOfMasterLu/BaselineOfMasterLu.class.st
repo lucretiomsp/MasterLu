@@ -6,21 +6,20 @@ Class {
 }
 
 { #category : 'baselines' }
-BaselineOfMasterLu >> baseline: spec [ 
+BaselineOfMasterLu >> baseline: spec [
     <baseline>
     spec for: #common do: [
         spec
-            package: 'Phausto' with: [ 
-                spec repository: 'github://lucretiomsp/phausto:main' 
+            package: 'Phausto' with: [
+                spec repository: 'github://lucretiomsp/phausto:main'
             ];
-            package: 'Coypu' with: [ 
-                spec repository: 'github://lucretiomsp/coypu:master' 
+            package: 'Coypu' with: [
+                spec repository: 'github://lucretiomsp/coypu:master'
             ];
-           baseline: 'CoypuIDE';
-	       with: [ spec repository: 'github://pharo-graphics/CoypuIDE:master'];
-		   
-           package: 'MasterLu'
-    ]
-
-
+            baseline: 'CoypuIDE' with: [
+                spec repository: 'github://pharo-graphics/CoypuIDE:master'
+            ];
+            package: 'MasterLu'.
+    ].
 ]
+
