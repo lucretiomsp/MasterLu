@@ -17,8 +17,9 @@ BaselineOfMasterLu >> baseline: spec [
                 spec repository: 'github://lucretiomsp/coypu:master' 
             ];
            baseline: 'CoypuIDE';
-	repository: 'github://pharo-graphics/CoypuIDE:master';
-            package: 'MasterLu'
+	       with: [ spec repository: 'github://pharo-graphics/CoypuIDE:master'];
+		   
+           package: 'MasterLu'
     ]
 
 
