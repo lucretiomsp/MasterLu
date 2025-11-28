@@ -412,11 +412,11 @@ dsp displayUI.
 
 
 "Alternatively, we can close the UI and play the TpSampler algorithmically."
-[128 timesRepeat: [ dsp trig: ''TpSamplerGate'' . dsp setValue: (Random new nextIntegerBetween: 1  and: 10 ) parameter: ''TpSamplerIndex'' . (Random new nextIntegerBetween: 80 and: 310 ) milliSeconds wait ]] fork.
+[128 timesRepeat: [ dsp trig: ''tpSamplerFreq'' . dsp setValue: (Random new nextIntegerBetween: 1  and: 10 ) parameter: ''tpSamplerIndex'' . (Random new nextIntegerBetween: 80 and: 310 ) milliSeconds wait ]] fork.
 
 "Or we can play a random melody using the same sample:"
-dsp setValue: 8 parameter: ''TpSamplerIndex'' .
-[128 timesRepeat: [ dsp playNote: (Random new nextIntegerBetween: 35  and: 78 ) prefix: ''TpSampler''  dur: 0.1 . 110 milliSeconds wait ]] fork.
+dsp setValue: 8 parameter: ''tpSamplerIndex'' .
+[128 timesRepeat: [ dsp playNote: (Random new nextIntegerBetween: 35  and: 78 ) prefix: ''tpSampler''  dur: 0.1 . 110 milliSeconds wait ]] fork.
 
 "stop and destroy the dsp"
 dsp stop.
