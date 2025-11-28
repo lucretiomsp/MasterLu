@@ -350,9 +350,11 @@ MasterLu previous.
 { #category : 'lessons' }
 PhaustoTutorial >> playNotes101 [
 
-	^ Lesson title: 'PlayNotes 101' lesson: '"What if we want to play a melody with this guitar ?"
+	^ Lesson
+		  title: 'PlayNotes 101'
+		  lesson: '"What if we want to play a melody with this guitar ?"
 "Using a symbol as the argument of a UnitGenerator setter we change its label"
-	synth := ElecGuitar new freq: #ElecGuitarNote; trigger: #ElecGuitarGate.
+	synth := ElecGuitar new freq: #ElecGuitarFreq; trigger: #ElecGuitarTrigger.
 	"We create a DSP from this synth"
 	dsp := synth asDsp.
 	"We initialize the DSP"
