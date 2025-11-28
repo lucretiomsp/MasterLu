@@ -402,7 +402,7 @@ PhaustoTutorial >> tpSamplerBasics [
 	^ Lesson title: 'TpSampler basics' lesson: '	
 "TpSampler is a quick-and-dirty multisampler created as part of TurboPhausto. When we create a new instance of TpSampler, we need to provide a path to a folder containing only .wav or .aiff samples. If you drag and drop a folder into the playground, Phausto will automatically generate the path as a string for you."
 "To follow this example please download the MoofLodSamples folder in the Phausto GitHb repository and place it into your Documents folder."
-sp := TpSampler new pathToFolder: ''/Users/domenicocipriani/Documents/MoofLodSamples''.
+sp := TpSampler new pathToFolder: ''/Users/domenicocipriani/Documents/TurboSamples/conga''.
 "we create a stereo dsp from the sampler"
 dsp := sp stereo asDsp.
 "we initialize it".
@@ -414,7 +414,7 @@ dsp displayUI.
 
 
 "Alternatively, we can close the UI and play the TpSampler algorithmically."
-[128 timesRepeat: [ dsp trig: ''tpSamplerFreq'' . dsp setValue: (Random new nextIntegerBetween: 1  and: 10 ) parameter: ''tpSamplerIndex'' . (Random new nextIntegerBetween: 80 and: 310 ) milliSeconds wait ]] fork.
+[128 timesRepeat: [ dsp trig: ''tpSamplerTrigger'' . dsp setValue: (Random new nextIntegerBetween: 1  and: 9 ) parameter: ''tpSamplerIndex'' . (Random new nextIntegerBetween: 80 and: 310 ) milliSeconds wait ]] fork.
 
 "Or we can play a random melody using the same sample:"
 dsp setValue: 8 parameter: ''tpSamplerIndex'' .
