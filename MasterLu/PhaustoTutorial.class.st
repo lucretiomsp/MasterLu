@@ -199,14 +199,16 @@ PhaustoTutorial >> displayTheUI [
 { #category : 'lessons' }
 PhaustoTutorial >> essentialFMSynthesis [
 
-	^ Lesson title: '2-OPerators FM Synthesis' lesson: '"2 operators FM Synthesis with Dx7 operators"
+	^ Lesson
+		  title: '2-OPerators FM Synthesis'
+		  lesson: '"2 operators FM Synthesis with Dx7 operators"
 "There are many ways to achieve Frequency Modulation (FM) synthesis in Phausto; one is to use the built-in Dx7 operators."
 "First we define a knob to set frequency"
 frequencyKnob := PhHSlider new label: ''Freq'' values: #(100 20 4000 0.1).
 "Then we set a knob to set frequency of bothe the operators"
 ratioKnob := PhHSlider new label: ''Ratio'' values: #(1 0.1 32 0.1).
 "We create a modulator using a  SineOSc"
-modulator := SineOsc new freq: frequencyKnob * ratio.
+modulator := SineOsc new freq: frequencyKnob * ratioKnob.
 "We create a carrier: a Dx7 Operator whose phaseMod is the SineOsc modulator."
 carrier := Dx7Op new phaseMod: modulator; freq: frequencyKnob .
 
