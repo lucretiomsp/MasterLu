@@ -111,7 +111,7 @@ tri := TriOsc new.
 sqr := SquareOsc new.
 saw := SawOsc new.
 
-"Create a NumericalEntry UIPatameter to switch between waveforms. Only UI Parameters can ve changed in real time!"
+"Create a NumericalEntry UIParameter to switch between waveforms. Only UI Parameters can ve changed in real time!"
 index := PhNumEntry new label: ''Wave'' init: 0 min: 0 max: 3 step: 1.
 "Combine the 4 oscillators in parallel using the comma (,) operator."
 oscillators := sine , tri , sqr , saw.
@@ -119,6 +119,47 @@ oscillators := sine , tri , sqr , saw.
 "Create a selector by combining the NumEntry UI parameter with the oscillators and connecting them to the selector."
 "This connection closely resembles Faust core syntax. You can use it for low-level connections, but we always recommend using Phausto''s simpler API when possible."
 selector :=  index , oscillators connectTo: PhSelect4 new. 
+
+
+"Create the DSP, initialize it, start it, and display the UI."
+dsp := selector stereo asDsp.
+dsp init.
+dsp start.
+dsp displayUI.
+
+"Stop and destroy the DSP to move to the next lesson."
+dsp stop. 
+dsp destroy
+
+
+MasterLu next.
+MasterLu previous.
+
+	
+	'
+]
+
+{ #category : 'lessons' }
+PhaustoTutorial >> basicWaveformsWithSelectN [
+
+	^ Lesson title: 'Basic waveforms with SelctN' lesson: '	
+"Select between more than 4 waveforms using Phausto API"
+
+"Create the 4 oscillators"
+sine := SineOsc new.
+tri := TriOsc new.
+sqr := SquareOsc new.
+saw := SawOsc new.
+noise := Noise new.
+
+"Create a NumericalEntry UIParameter to switch between waveforms. Only UI Parameters can ve changed in real time!"
+index := PhNumEntry new label: ''Wave'' init: 0 min: 0 max: 3 step: 1.
+"Combine the 4 oscillators in parallel using the comma (,) operator."
+oscillators := sine , tri , sqr , saw, noise.
+
+"Create a selector using PhSelectN"
+
+selector :=  ( PhSelectN new: oscillators ) index: index .
 
 
 "Create the DSP, initialize it, start it, and display the UI."
@@ -438,7 +479,7 @@ PhaustoTutorial >> tutorial [
 
 	^ #( #helloPhausto #stereo #atTheControls #displayTheUI #whatAreUGens
 	     #chuckInto #playNotes101 #ourFirstSynth #additiveSynthesis
-	     #additiveSynthesis2 #modalSynthesis #tpSamplerBasics #basicWaveforms
+	     #additiveSynthesis2 #modalSynthesis #tpSamplerBasics #basicWaveforms #basicWaveformsWithSelectN
 	     #pitchEnvelope #essentialFMSynthesis )
 ]
 
